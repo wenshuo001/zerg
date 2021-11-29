@@ -23,10 +23,7 @@ class Banner extends Model
         return $result;
     }
 
-    /**
-     * @param $id int banner所在位置
-     * @return Banner
-     */
+
     public function getItems()
     {
         $result = $this->hasMany('BannerItem','banner_id','id');

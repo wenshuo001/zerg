@@ -8,7 +8,7 @@ use think\Exception;
 use think\Request;
 use app\api\validate\IDMustBePostiveint;
 use think\Validate;
-use \app\api\model\Banner as BannerModel;
+use app\api\model\Banner as BannerModel;
 use app\lib\exception\BannerMissException;
 class Banner
 {
@@ -21,7 +21,7 @@ class Banner
     public function getBanner($id){
         //验证请求最长字段
         (new IDMustBePostiveint())->goCheck();
-        $banner = BannerModel::get($id);
+        $banner = BannerModel::with('getItems')->find($id);
 
 //        $banner = BannerModel::getBannerById($id);
         if(empty($banner)){
